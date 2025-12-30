@@ -74,6 +74,7 @@ Before we pull any buyer data, we need to understand the **supplier's business r
 ├─ Freight constraints: Do they have 3PL relationships? Warehouses in multiple states?
 ├─ Portfolio preference: Whale hunters / Flow-focused / 70/30 Rule (our recommendation)
 ├─ Close rate context: How do they close? (Sample-driven = Tom's edge)
+├─ What's the value proposition against other suppliers? (Generic OR non-generic = Store for AI action suggestions for each buyer card) + follow-up question if too generic given... The follow-up question style: Between these two hypothetical buyers which one will you close faster, if X was true (OR if they wanted X now)?... X being a critical demand or bottleneck that the Onboarding AI figures out that the supplier business will have as a result of their business nature, and the generic answer he provided to the previous question, to determine where their generic answer becomes clear (Weakens or strengthens the business, doesn't matter, just need to be not generic)
 └─ Decision-maker contact: CEO, VP Sales, Owner (extracted from domain)
 ```
 
@@ -93,7 +94,7 @@ IF supplier claims "$3M revenue" BUT Secretary of State shows "Suspended status"
   THEN flag for manual review before approval
 
 IF supplier website is <1 year old
-  THEN require additional verification (tax ID, bank statement, customer reference)
+  THEN flag for manual review before approval
 ```
 
 **Output:**
@@ -115,7 +116,7 @@ IF supplier website is <1 year old
 > Focus on steady cash flow ($3K-$10K deals). Predictable revenue. Shorter cycles.
 > 
 > **Option C: The 70/30 Rule** (Recommended)  
-> 70% flow customers (steady cash) + 30% whale hunting (growth engine). Balanced risk.
+> 70% flow customers (steady cash) + 30% whale hunting whales (growth engine). Balanced risk.
 
 **Why This Matters:**
 - **Seed, not rule:** If they pick "Whales Only," we still deliver flow customers mixed in
@@ -153,8 +154,8 @@ Suppliers often overestimate capacity or underestimate constraints. We validate 
 IF SoS status = "Active" AND website >1 year old AND LinkedIn shows 5+ employees
   THEN confidence = HIGH (proceed with full buyer delivery)
 
-IF SoS status = "Suspended" OR website <6 months old OR no LinkedIn
-  THEN confidence = LOW (require deposit, start with 10 buyers/month trial)
+IF SoS status = "Suspended"
+  THEN confidence = LOW (require additional layer of verification through manual human check)
 
 IF claimed revenue = $5M BUT D&B shows $500K
   THEN adjust expectations: "We're seeing market data at $500K-$1M range. Let's start there."
@@ -197,6 +198,7 @@ FROM: Supplier's website domain (e.g., widget-corp.com)
 ```
 
 **Tools:**
+- SoS records for email verifications (discovery), business match, DBA, Government records on Tax, and permits
 - Apify web scraper (product catalog, contact info)
 - WHOIS lookup (domain registration date)
 - SimilarWeb API (traffic estimate, free tier)
@@ -225,6 +227,7 @@ FROM: Email domain + LinkedIn
 ```
 
 **Tools:**
+- SoS records for email verifications (discovery), business match, DBA, Government records on Tax, and permits
 - Hunter.io (email pattern detection, $50/mo)
 - Apollo.io (contact enrichment, $100/mo Phase 2)
 - LinkedIn Sales Navigator (if Phase 2, $80/mo)
@@ -243,11 +246,12 @@ FROM: Email domain + LinkedIn
 ├─ LinkedIn: Company page followers, employee count, job postings, company updates
 ├─ Facebook Business Page: Followers, review count, activity
 ├─ Instagram (if relevant): Follower growth, post frequency
-├─ Twitter/X: Follower count, engagement, industry mentions
 ├─ Reddit: Mentions in industry subreddits (packaging, manufacturing, logistics)
-├─ Google Reviews: Review count + sentiment (packaging/shipping mentions)
+├─ Google Reviews: Review count + sentiment (packaging/shipping mentions) + volume trending (Rising or falling)
+├─ Google Search Query: "[CompanyName OR CompanyWebsite] + reviews" top links will provide the best review platforms for [CompanyName] (If any)
 ├─ News API: Press releases, announcements, funding news
-└─ BBB Profile: Rating, complaint history, years in business
+├─ BBB Profile: Rating, complaint history, years in business
+└─ Etsy, Amazon, etc. Review count + sentiment (packaging/shipping mentions) + volume trending (Rising or falling)
 ```
 
 **Why:**
@@ -267,6 +271,7 @@ FROM: Email domain + LinkedIn
 **Output:**
 - **Social Presence Score** (0-100)
 - Signals feed into Layer 3B (urgency/velocity scoring)
+- Used for buyer intelligence
 
 ---
 
@@ -276,17 +281,17 @@ FROM: Email domain + LinkedIn
 ```
 FROM: All Layer 1 data aggregated
 
-├─ Industry classification: Manufacturing / E-commerce / Pharmaceutical / Food & Beverage
+├─ Industry classification: Manufacturing / E-commerce / Pharmaceutical / Food & Beverage / Transportation / Storage
 ├─ Company size estimate: <10 employees / 10-50 / 50-200 / 200+
 ├─ Revenue range estimate: $0-$500K / $500K-$2M / $2M-$10M / $10M+
 ├─ Growth trajectory: Scaling (hockey stick) / Growing (steady) / Stable / Declining
 ├─ Buyer profile generation: Who do they sell to? (inferred from testimonials, case studies)
 ├─ Packaging need estimate: Volume per week (based on industry + size)
-└─ Urgency baseline: Hot (recent signals) / Warm (moderate) / Cold (no recent signals)
+└─ Urgency baseline: Hot (recent signals) / Warm (moderate) / Cool (no recent signals)
 ```
 
 **Method:**
-- GPT-4/Claude API prompt with structured output
+- GPT-4,5/Claude/Perplexity/Vertex API prompt with structured output
 - Feed all Layer 1 data → Ask: "What's their revenue range? Growth stage? Packaging volume?"
 
 **Automation:** 100% (AI model)
@@ -308,12 +313,12 @@ FROM: Supplier's industry + product + location
 ├─ Indirect competitors: Who sells substitute products (shrink wrap instead of stretch)?
 ├─ Market leaders: Top 3-5 players in the region
 ├─ Pricing signals: Public pricing (if available on competitor sites)
-├─ Product mix: What products do they offer vs. what supplier offers?
+├─ Product mix: What products do THEY offer vs. what supplier offers?
 └─ Market positioning: Premium / Mid-market / Budget
 ```
 
 **Tools:**
-- Google Search: "stretch wrap supplier New Jersey" (scrape results)
+- Google Search: "stretch wrap supplier New Jersey" OR "[supplier CompanyName] Alternative" OR "[Supplier ProductName] New Jersey" (scrape results)
 - LinkedIn Company Search: Industry = "Packaging" + Location = "New Jersey"
 - Yellow Pages / Yelp: Business directory scraping
 - Trade associations: Packaging industry associations member lists
@@ -332,8 +337,9 @@ FROM: Supplier's industry + product + location
 ```
 FOR EACH COMPETITOR:
 
-├─ Review aggregation: G2 (if SaaS), Google Reviews, Yelp, BBB
+├─ Review aggregation: Google Reviews, Yelp, BBB, and the top 3 platforms that appear in Google search when searching for: "[Competitor CompanyName] + Reviews."
 ├─ Average rating: 4.5+ stars = strong | 3.0-4.0 = weak
+├─ Average rating" 1.0.3.0 = opportunity for the supplier to swoop in and take that buyer, based on the left sentiment review.
 ├─ Review volume: 100+ reviews = established | <10 reviews = new/niche
 ├─ Website quality: Modern site = well-funded | Outdated = struggling
 ├─ Social presence: Active LinkedIn = growing | Dormant = stable/declining
@@ -355,17 +361,17 @@ Score 0-39: Weak competitor (easy to win against)
 **Output:**
 - **Competitor Strength Card** (for each competitor)
 - Used in supplier's dashboard: "Your top 3 competitors in North Jersey"
-
+- Possible buyer detection (discovery) wanting alternative packaging solutions as a result of poor competitor services. 
 ---
 
 ## 2.7: LAYER 2C - SUPPLIER'S CURRENT CUSTOMER PROFILE
 
 **What We Find:**
 ```
-FROM: Supplier's website + LinkedIn + news
+FROM: Supplier's direct current-customer-base file upload, Supplier's website + LinkedIn + news
 
 ├─ Customer logos displayed on site
-├─ Testimonials mentioning company names
+├─ Testimonials mentioning company names to clone the perfect buyer 
 ├─ LinkedIn connections (CEO connected to which companies?)
 ├─ Case studies naming customers
 ├─ News mentions: "Company X partners with [supplier]"
@@ -374,6 +380,7 @@ FROM: Supplier's website + LinkedIn + news
 
 **Why This Matters:**
 - **Gap analysis:** If supplier sells to Company A, and competitor sells to Company B, we prioritize Company B
+- To clone the perfect buyer
 - **Avoid duplication:** Don't recommend buyers they already have
 
 **Tools:**
@@ -414,8 +421,10 @@ All signals from Layers 1-5 flow into this hub. We apply **weighted scoring** to
 ├─ Recent SBA loan (7a/504): +6 to +8
 ├─ LinkedIn hiring spree (5+ jobs posted): +5 to +7
 ├─ Website traffic spike (+100% in 30 days): +6 to +8
-├─ Marketplace sales surge (Amazon/eBay reviews up 50%): +6 to +8
+├─ Marketplace sales surge (Amazon/eBay/Etsy/Shopify/Favorite platform (Found from the term Googled: "[CompanyName] + Reviews" and the top results are the favorite platforms for that buyer, reviews up 50%): +6 to +8
 ├─ Google reviews mentioning "packaging" or "shipping": +2
+├─ Google/Meta/IG/TikTok Ad creative volume spike: +7
+├─ Google/Meta/IG/TikTok Ad budget spike: +7
 └─ Social media mentions (new product launch): +3 to +5
 ```
 
@@ -424,6 +433,7 @@ All signals from Layers 1-5 flow into this hub. We apply **weighted scoring** to
 ├─ Active IRS tax lien: -5 (cash flow problem, low priority)
 ├─ Bankruptcy filing (active): -10 (avoid)
 ├─ Suspended business license: -8 (not operating)
+├─ Very low credit score: -2
 └─ Website down/inactive: -5 (dormant)
 ```
 
@@ -463,6 +473,8 @@ Cap: 100 maximum
 ├─ Marketplace review growth (+50% MoM): +6 to +8
 ├─ Social follower growth (+50% MoM): +5 to +7
 ├─ Tax lien resolved (sign of recovery): +3 to +5
+├─ Google/Meta/IG/TikTok Ad creative volume spike: +7
+├─ Google/Meta/IG/TikTok Ad budget spike: +7
 └─ New product launch announcements: +4 to +6
 ```
 
@@ -606,7 +618,7 @@ Industry: Food & Beverage Packaging
 💡 RECOMMENDED APPROACH:
 ├─ Contact: John Doe, VP Operations (email: john@acme.com)
 ├─ Offer: Sample shipment (Tom's strength: 60% close rate on samples)
-├─ Pitch: "We see you're expanding. Let's cut your packaging costs 30%."
+├─ Pitch: "We see you're expanding. Let's cut your packaging costs 30%." Direction pulled from the non-generic onboarding answer to the question "What's the value proposition?"
 ├─ Terms: Net 60 (low risk)
 └─ Follow-up: Call in 1 week after sample delivery
 
