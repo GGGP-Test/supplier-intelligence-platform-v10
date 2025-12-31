@@ -142,8 +142,9 @@ Suppliers often overestimate capacity or underestimate constraints. We validate 
 **Sources for Cross-Check:**
 ```
 ├─ Secretary of State: Business status (active/suspended/dissolved)
-├─ Tax Records (where public): IRS liens, state tax filings
-├─ D&B Report (if available): Revenue range, employee count
+├─ Tax Records (where public): IRS liens, state tax filings, calculate revenue if possible
+├─ D&B Report (if available): Revenue range, employee count,
+├─ If no record found for revenue, last resort to find revenue range... Google Query search: "[Company Website] + revenue" and the top results assosicated with the exact same company name match will give a possible revenue range (This works for 80% of businesses)>> STILL if no revenue or too different revenue ranges from two or multiple platforms that gather company intel (Like ZoomInfo, RocketReach, etc.), cross check with other platforms like Linkedin or other places, and if still not possible to pin down, don't decide on their revenue range. (Only 1% of companies' revenue can not be decided after all of the searches above.
 ├─ LinkedIn: Employee count, hiring activity
 ├─ Website analysis: Copyright year, social proof, customer logos
 └─ Shipping data (if Phase 2): Import/export records showing actual volume
@@ -334,33 +335,49 @@ FROM: Supplier's industry + product + location
 ## 2.6: LAYER 2B - COMPETITOR STRENGTH SCORING
 
 **What We Score:**
+GOAL 1:
+We look for any reviews of the same product, any pricing ranges, any product value proposition between the supplier & competitor (to find if it's worth it for the supplier to create AND use a value proposition against them, when the competitor's buyer(s) complain/praise about a certain aspect of their services (ANY review... we consider any review as a chance to steal their buyer). And compare to see if the supplier's solution covers the buyer's complaint or needs. The scoring can either come from any pricing differences or any value propositions that the supplier's product is offering where the competitor product is not (The competitor can be outside OR inside of the supplier's licensed zone, meaning, the buyer could buy from a competitor outside or inside the zone), the goal is to give each review a chance to steal the competitor's buyers (coming from inside the supplier zone, but can either buy from a competitor coming from outside or inside the supplier zone.) 
+GOAL 2:
+We look for the competitor activity in legal and governmental records, new location permits, and new salespeople (To notify the supplier). The scoring is coming from an angle of territorial danger, where we score only to notify the supplier in that specific licensed zone or its neighboring zones.
 ```
 FOR EACH COMPETITOR:
 
-├─ Review aggregation: Google Reviews, Yelp, BBB, and the top 3 platforms that appear in Google search when searching for: "[Competitor CompanyName] + Reviews."
-├─ Average rating: 4.5+ stars = strong | 3.0-4.0 = weak
-├─ Average rating" 1.0.3.0 = opportunity for the supplier to swoop in and take that buyer, based on the left sentiment review.
-├─ Review volume: 100+ reviews = established | <10 reviews = new/niche
-├─ Website quality: Modern site = well-funded | Outdated = struggling
-├─ Social presence: Active LinkedIn = growing | Dormant = stable/declining
-├─ Pricing signals: Posted pricing = transparent | No pricing = custom quotes
-├─ Geographic reach: Multi-state warehouses = scale | Single location = local
-└─ Product range: 50+ SKUs = full-service | 5 SKUs = niche specialist
+├─ Review aggregation: Google Reviews, Yelp, BBB, and the top 3 platforms that appear in Google search when searching for: "[Competitor website] + Reviews."
+├─ Review Recency: 0-6 Months ago = strong | 6-12 months = medium (Still might be a buyer) | 12+ months = weak
+├─ Average review rating: 4.0-5.0 stars = gather ONLY for when we find/gather a good+ value proposition for the supplier | 2.0-3.0 stars = gather for good+ value prop (Based on review context) + the context (sentiment of the review also matters to match to see if the supplier can deliver a better service)... If any was true, we suggest it to the supplier | 1.0 stars = awesome positioning if the supplier service covers for the negative comment (No need to score and we directly notify the supplier IF review recency is <6 months... but IF >6 months we score it)
+├─ Website: Check for price ranges if available, same product quality to look for any value proposition differences between the supplier and the competitor product.
+├─ Price rating: If >15% price difference = AWESOME value prop for supplier (we look for any signal to find their buyers) ... Store the exact price difference to notify the supplier when a buyer is found (we find both happy and unhappy buyers through any signals)
+├─ Value prop rating (Other than price): Better product fit (In terms of tech used in product) = good+ value prop for supplier (we look for any signal to find their buyers) | Faster delivery = Great value prop we look for any competitor's buyer | Lower MOQ = neutral to good value (We look for buyer signals and notify the supplier because of it)
+├─ Social search: LinkedIn/relevant company directory, relevant job posting platforms: look for new job postings in or around the supplier zone = strong | new salespeople in or around the supplier zone = strong
+└─ Geographic velocity: New of the same region (or neighboring) warehouses OR locations = strong 
 ```
 
 **Scoring Formula:**
 ```
-Competitor Strength = (Review Score × 0.3) + (Website Quality × 0.2) + (Social Activity × 0.2) + (Product Range × 0.15) + (Geographic Reach × 0.15)
+For Goal 1: **A chance (weight formula) to steal the competitors' buyers.**
 
-Score 80-100: Dominant competitor (caution, hard to win against)
-Score 60-79: Strong competitor (winnable with differentiation)
-Score 40-59: Moderate competitor (neutral)
-Score 0-39: Weak competitor (easy to win against)
+competitor buyer strength: Value Proposition[(Pricing difference × 0.55) + (Product supriority × 0.20) × (Faster delivery × 0.20) + (Lower MOQ × 0.05)] + Buyer Sentiment[(Review Score × 0.10)  + (Review context × 0.90)]
+
+NOTE: here we might need a weight analysis on, IF,THEN situations, where the answer depends drastically on the context of what the buyer says in what scenario... IF they say something good but give a bad score, THEN (We should only look at what they said and figure out if the supplier can cover for what they nagged about... OR vice versa is also true... SO it heavily depends on what they say and even NOT say!... IF they say something good and also give a good score but we figure out based on the competitor buyer business (What they might have bought, with what order quantity; as well as, the competitor business their pricing (compare it with the supplier business) as well as value prop difference, we overlap the areas that the competitor buyer might not have seen about the competitor (Or is missing in the competitor business) that could have a big imapct and help on the competitor buyer business... these contextual and sentimental and unknown suppliers in the eyes of the competitor buyers, will trigger how much or many better choices those competitor buyers have with other suppliers (Like our suppliers). IF we find and conclude these variables, for the competitor's buyers business... they can alone overrule any other metric and simply be going to the "Find their (Competitor buyer) contact info" level and suggest it to the supplier, and label them based on how much more powerful the supplier value prop is, versus the competitor's.
+
+Score 80-100: Urgent (Pick up the phone and call AND/OR text + Email)
+Score 60-79: Somewhat Urgent (Email + maybe Call + text)
+Score 40-59: Try selling IF didn't work Nurture (Email)
+Score 0-39: Nurture (Email)
+
+
+For Goal 2: **A heads-up mechanism to notify suppliers what the competitors are doing around them**
+
+Competitor activity strength = (new location permit in <6 months in the supplier zone or its vicinity × 0.75) + (New salespeople in the zone or its vicinity × 0.25)
+
+Score 80-100: Dominant competitor (Notify)
+Score 60-79: Strong competitor (Notify)
+Score 0-59: Moderate competitor (Don't notify)
 ```
 
 **Output:**
 - **Competitor Strength Card** (for each competitor)
-- Used in supplier's dashboard: "Your top 3 competitors in North Jersey"
+- Used in supplier's dashboard: "Your top X competitors' activity in North Jersey AND the surrounding zones, AND competitors' buyers intelligence based on URGENCY."
 - Possible buyer detection (discovery) wanting alternative packaging solutions as a result of poor competitor services. 
 ---
 
@@ -371,6 +388,7 @@ Score 0-39: Weak competitor (easy to win against)
 FROM: Supplier's direct current-customer-base file upload, Supplier's website + LinkedIn + news
 
 ├─ Customer logos displayed on site
+├─ Supplier's direct current customer base file upload on our platform ("Upload your current customer base to rule out of our buyer search" Optional)
 ├─ Testimonials mentioning company names to clone the perfect buyer 
 ├─ LinkedIn connections (CEO connected to which companies?)
 ├─ Case studies naming customers
@@ -423,8 +441,10 @@ All signals from Layers 1-5 flow into this hub. We apply **weighted scoring** to
 ├─ Website traffic spike (+100% in 30 days): +6 to +8
 ├─ Marketplace sales surge (Amazon/eBay/Etsy/Shopify/Favorite platform (Found from the term Googled: "[CompanyName] + Reviews" and the top results are the favorite platforms for that buyer, reviews up 50%): +6 to +8
 ├─ Google reviews mentioning "packaging" or "shipping": +2
-├─ Google/Meta/IG/TikTok Ad creative volume spike: +7
-├─ Google/Meta/IG/TikTok Ad budget spike: +7
+├─ Any positive/negative/neutral platform reviews mentioning "packaging" or "shipping": +2
+├─ Any platform review with positive/negative/neutral context problems/realized value proposition with a competitor's similar packaging product that signals clear actions for the supplier to cover for those value prop or problems about the competitor solutions: +7 to +9
+├─ Google/Meta/IG/TikTok Ad creative volume spike: +7 to +9
+├─ Google/Meta/IG/TikTok Ad budget spike: +7 to +9
 └─ Social media mentions (new product launch): +3 to +5
 ```
 
@@ -520,7 +540,7 @@ Interpretation:
 ├─ Recent OSHA violation (unresolved): -3
 ├─ Data older than 30 days: -2
 ├─ Conflicting signals (LinkedIn says 50 employees, SoS says 5): -5
-└─ Website unreachable: -10
+└─ Website unreachable: -7
 ```
 
 **Confidence Formula:**
@@ -546,7 +566,7 @@ Interpretation:
 
 ## 3.4: RISK ASSESSMENT (RED/YELLOW/GREEN)
 
-**Definition:** Payment risk + operational risk combined.
+**Definition:** Payment risk (use "alert" instead of "risk" in front of supplier) + operational risk combined.
 
 **Red Flags (High Risk):**
 ```
@@ -613,6 +633,7 @@ Industry: Food & Beverage Packaging
 ├─ ✅ SBA 7(a) loan secured ($250K, 6 months ago)
 ├─ ✅ LinkedIn: 8 new job postings (warehouse staff, ops manager)
 ├─ ✅ Google reviews: 15 new reviews mentioning "fast shipping"
+├─ ✅ reviews of competition reviews
 └─ ✅ D&B PAYDEX: 85 (pays on time)
 
 💡 RECOMMENDED APPROACH:
