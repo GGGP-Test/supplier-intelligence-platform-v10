@@ -617,7 +617,7 @@ Industry: Food & Beverage Packaging
 
 💡 RECOMMENDED APPROACH:
 ├─ Contact: John Doe, VP Operations (email: john@acme.com)
-├─ Offer: Sample shipment (Tom's strength: 60% close rate on samples)
+├─ Offer: Sample shipment (e.g. Tom's strength: 60% close rate on samples)
 ├─ Pitch: "We see you're expanding. Let's cut your packaging costs 30%." Direction pulled from the non-generic onboarding answer to the question "What's the value proposition?"
 ├─ Terms: Net 60 (low risk)
 └─ Follow-up: Call in 1 week after sample delivery
@@ -655,6 +655,7 @@ Government data is the **most reliable** signal. If a permit is filed, a loan is
 ├─ Business type: LLC / C-Corp / S-Corp / Sole Proprietor / Partnership
 ├─ Officer names: CEO, President, Secretary, Treasurer, Managing Member
 ├─ Registered agent name + address (often = founder/owner)
+├─ Business OR Personal email (Used as a backup source of email discovery, They will answer to this contact info)
 ├─ Mailing address (may differ from HQ)
 ├─ Annual report filing history (last filed date)
 └─ Name change history (strategic pivots)
@@ -677,7 +678,7 @@ Late annual report → Yellow flag (admin issues)
 
 **Signals Generated:**
 ```
-Active bankruptcy → RED (critical risk)
+Active bankruptcy + Recent liens and Lawsuit → RED (critical risk)
 Recent liens (last 2 years) → YELLOW (financial stress)
 Resolved lien (5+ years old) → Neutral (historical)
 Multiple judgments → YELLOW (payment history concern)
