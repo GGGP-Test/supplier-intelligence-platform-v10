@@ -668,7 +668,7 @@ Government data is the **most reliable** signal. If a permit is filed, a loan is
 
 ## 4.1: SECRETARY OF STATE REGISTRATION
 
-**What We Collect:**
+A. **What We Collect About The Supplier:**
 ```
 ├─ Business legal name + all DBA names
 ├─ Status: Active / Dissolved / Suspended / Inactive
@@ -691,13 +691,52 @@ Recent name change → Note for research (pivot?)
 Late annual report → Yellow flag (admin issues)
 ```
 
+B. **What We Collect About The Competitor:**
+```
+├─ Business legal name + all DBA names
+├─ Officer names: CEO, President, Secretary, Treasurer, Managing Member
+├─ Registered address (often = founder/owner)
+├─ Mailing address (may differ from HQ)
+├─ New permits + New location opens (Around the supplier zone)
+└─ Name change history (strategic pivots)
+```
+**Signals Generated:**
+```
+Business Name and DBA (If any)
+New permits
+New location opens
+```
+
+C. **What We Collect About The Competitors' Buyers:**
+```
+├─ Business legal name + all DBA names
+├─ Status: Active / Dissolved / Suspended / Inactive
+├─ Incorporation date + state
+├─ Business type: LLC / C-Corp / S-Corp / Sole Proprietor / Partnership
+├─ Officer names: CEO, President, Secretary, Treasurer, Managing Member
+├─ Registered agent name + address (often = founder/owner)
+├─ Business OR Personal email (Used as a backup source of email discovery, They will answer to this contact info)
+├─ Mailing address (may differ from HQ)
+├─ Annual report filing history (last filed date)
+└─ Name change history (strategic pivots)
+```
+**Signals Generated:**
+```
+Status = "Active" → Confidence +2
+Status = "Suspended" → Red flag (manual review)
+Status = "Dissolved" → Exclude buyer
+Recent name change → Note for research (pivot?)
+Late annual report → Yellow flag (admin issues)
+```
+
+
 ---
 
-## 4.2: FEDERAL & STATE COURT RECORDS
+## 4.2: FEDERAL & STATE COURT RECORDS 
 
 **Bankruptcy, Liens, Judgments:** Complete coverage for extreme risk detection.
 
-**Signals Generated:**
+**Signals Generated:** (Repeat For Competitors' Buyers)
 ```
 Active bankruptcy + Recent liens and Lawsuit → RED (critical risk)
 Recent liens (last 2 years) → YELLOW (financial stress)
@@ -712,7 +751,7 @@ Clean record → GREEN (confidence boost)
 
 **🔥 CRITICAL EXPANSION SIGNAL:** New permit = preparing for production surge = **PACKAGING NEED INCOMING**
 
-**Signals Generated:**
+**Signals Generated:** (Repeat for relevant data about competitor and Competitor's buyer)
 ```
 Building permit (last 6 months) → URGENCY +7 to +9, VELOCITY +6 to +8
 Property value up >15% YoY → VELOCITY +5 to +7
@@ -726,7 +765,7 @@ Facility size estimation → Volume projection (boxes/week)
 
 **🔥 CRITICAL GROWTH SIGNAL:** UCC filing = company obtained financing = expansion capital
 
-**Signals Generated:**
+**Signals Generated:** (Repeat for relevant data about competitor and Competitor's buyer)
 ```
 New UCC filing (inventory collateral) → URGENCY +6 to +8, VELOCITY +7 to +9
 Recent equipment financing → VELOCITY +6, URGENCY +7
@@ -738,7 +777,7 @@ Large filing ($500K+) → URGENCY +8, VELOCITY +8
 
 ## 4.5: TRADE NAME REGISTRATIONS
 
-**Rebranding Detection:** Name change = strategic pivot = new product lines or buyer base
+**Rebranding Detection:** Name change = strategic pivot = new product lines or buyer base (Repeat for relevant data about competitor and Competitor's buyer)
 
 ---
 
@@ -758,7 +797,7 @@ Financial data answers: **Can they pay? Are they growing?**
 
 ## 5.1: BUSINESS CREDIT SCORE & PAYMENT HISTORY (D&B)
 
-**Dun & Bradstreet PAYDEX:** The gold standard for payment reliability.
+**Dun & Bradstreet PAYDEX:** The gold standard for payment reliability. NOTE: We only want to alert the suppliers about the extreme scenarios where if the buyer has multiple extreme bad and worst-case scenario debt or history, We JUST want to let them know, we don't want to scare them off with negative language, or even worse, not show them the buyer because they have a bad record.
 
 **Signals Generated:**
 ```
@@ -773,7 +812,7 @@ No D&B record → Confidence -10 (require manual verification)
 
 ## 5.2: SBA LOAN & FINANCING HISTORY
 
-**🔥 CRITICAL GROWTH SIGNAL:** Recent SBA loan = bank confidence + expansion capital
+**🔥 CRITICAL GROWTH SIGNAL:** Recent SBA loan = bank confidence + expansion capital. NOTE: We only want to alert the suppliers about the extreme scenarios where if the buyer has multiple extreme bad and worst-case scenario debt or history, We JUST want to let them know, we don't want to scare them off with negative language, or even worse, not show them the buyer because they have a bad record.
 
 **Signals Generated:**
 ```
@@ -787,7 +826,7 @@ Forgiven PPP → Confidence +2 (legitimate business validation)
 
 ## 5.3: TAX FILING PATTERNS
 
-**Severe Cash Flow Indicator:** Active IRS lien = **NOT PAYING TAXES** = severe financial stress
+**Severe Cash Flow Indicator:** Active IRS lien = **NOT PAYING TAXES** = severe financial stress. NOTE: We only want to alert the suppliers about the extreme scenarios where if the buyer has multiple extreme bad and worst-case scenario debt or history, We JUST want to let them know, we don't want to scare them off with negative language, or even worse, not show them the buyer because they have a bad record.
 
 **Signals Generated:**
 ```
@@ -810,14 +849,14 @@ Clean tax record → Confidence +1
 ### **Context:**
 **Facility size = packaging volume.** A 10K sq ft warehouse needs 20-50 boxes/week. A 100K sq ft facility needs 5,000+ boxes/week.
 
-**Volume Estimation:**
+**Volume Estimation:** Start as seed and change as the supplier input how correct the info we provided was, after them talking to the buyer.
 ```
 10K sq ft = 20-50 boxes/week = $3K-$10K/year packaging spend
 50K sq ft = 500-1,000 boxes/week = $50K-$150K/year
 100K sq ft = 5,000+ boxes/week = $500K-$1M+/year
 ```
 
-**Signals Generated:**
+**Signals Generated:** Start as seed and change as the supplier input how correct the info we provided was, after them talking to the buyer.
 ```
 Facility 50K+ sq ft + hiring spree → HIGH-VOLUME (estimate: 10K+ boxes/week)
 Property assessment up 20%+ YoY → VELOCITY +5 (facility upgrade/expansion)
