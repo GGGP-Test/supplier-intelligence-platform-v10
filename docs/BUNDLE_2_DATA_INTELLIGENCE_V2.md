@@ -777,7 +777,7 @@ Large filing ($500K+) → URGENCY +8, VELOCITY +8
 
 ## 4.5: TRADE NAME REGISTRATIONS
 
-**Rebranding Detection:** Name change = strategic pivot = new product lines or buyer base (Repeat for relevant data about competitor and Competitor's buyer)
+**Rebranding Detection:** Name change = strategic pivot = new product lines or buyer base (Repeat results for the relevant data about competitor and Competitor's buyer)
 
 ---
 
@@ -812,7 +812,7 @@ No D&B record → Confidence -10 (require manual verification)
 
 ## 5.2: SBA LOAN & FINANCING HISTORY
 
-**🔥 CRITICAL GROWTH SIGNAL:** Recent SBA loan = bank confidence + expansion capital. NOTE: We only want to alert the suppliers about the extreme scenarios where if the buyer has multiple extreme bad and worst-case scenario debt or history, We JUST want to let them know, we don't want to scare them off with negative language, or even worse, not show them the buyer because they have a bad record.
+**🔥 CRITICAL GROWTH SIGNAL:** Recent SBA loan = bank confidence + expansion capital. NOTE: We only want to alert the suppliers about the extreme scenarios about if the buyer has multiple extreme bad and worst-case scenario debt or history, We JUST want to let them know, we don't want to scare them off with negative languages like RISK or such, or even worse, not show them the buyer because they have a bad record. because they might have a bad record and still might be doing business and still need packaging. (If they need packaging = They will find the money to buy packaging)
 
 **Signals Generated:**
 ```
@@ -826,7 +826,7 @@ Forgiven PPP → Confidence +2 (legitimate business validation)
 
 ## 5.3: TAX FILING PATTERNS
 
-**Severe Cash Flow Indicator:** Active IRS lien = **NOT PAYING TAXES** = severe financial stress. NOTE: We only want to alert the suppliers about the extreme scenarios where if the buyer has multiple extreme bad and worst-case scenario debt or history, We JUST want to let them know, we don't want to scare them off with negative language, or even worse, not show them the buyer because they have a bad record.
+**Severe Cash Flow Indicator:** Active IRS lien = **NOT PAYING TAXES** = severe financial stress. NOTE: We only want to alert the suppliers about the extreme scenarios where if the buyer has multiple extreme bad and worst-case scenario debt or history, We JUST want to let them know, we don't want to scare them off with negative language, or even worse, not show them the buyer because they have a bad record and still might be doing business and still need packaging. (If they need packaging = They will find the money to buy packaging)
 
 **Signals Generated:**
 ```
