@@ -878,7 +878,53 @@ Confirms buyer is **legally operating** and **compliant**. Critical for confiden
 
 ---
 
-# PART 8: GHOST COMPANY DETECTION (Premium Add-On) {#part-8}
+## PART 8 (Core Business Discovery Approach): BUILDING-BY-BUILDING SCAN METHODOLOGY
+
+**The Approach:**
+We scan everything in a given zone (Hot areas are the priority in a zone)
+```
+Step 1: Define Zone Boundaries
+** I WANT YOU TO FIND MORE/BETTER REASONS OR STRATEGIES TO FIND HOT AREAS IN A ZONE (THE FOLLOWING IS JUST EXAMPLES) **
+├─ MAX ~1 million buildings per zone OR MAX ~2 Hot Areas per buyer industry per zone (Which means, the number of buildings per zone should not surpass 1 million and also, there should be no more than 2 hot areas in that zone for each buyer industry profile (e.g. there could not be more than 2 beverage hot areas in that given zone) OR the MAX number of entire hot zones for all buyer industries collectively should not surpass 10 hot areas in a zone), This all means that, at first it matters that the # of buildings should be less than 1 million per zone, while there could not more than 2 hot areas per buyer industry when we are only limiting 10 hot areas per zone for all buyer industries combined.
+├─ Where/when we decide that an area is considered hot or not: Based on, industry standards (What we can collect roughly, over the internet about that zone when we search for How many wine tasting locations there are in [given location] and based on any given dense pattern cluster in a small enough area, we consider that to be a hot area for that zone.
+├─ Example: North Jersey Zone = Postal codes 07001-07199
+├─ Total addresses in zone: ~1,000,000
+├─ Hierarchy of importantce = 1. First number of buildings matters, 2. then the 10 hot areas overall matter, 3. then the 2 hot area per buyer industry matters.
+
+Step 2: Define Hot Areas in the Defined Zone
+├─ ** I WANT YOU TO FIND MORE/BETTER REASONS OR STRATEGIES TO FIND HOT AREAS IN THAT ZONE (THE FOLLOWING IS JUST EXAMPLES) **
+├─ Word of the mouth zone for industrial or target buyer-related hot areas in that zone
+├─ Industrial areas in a given zone
+
+Step 3: Filter for Business Signals
+├─ Google Maps business listing
+├─ Secretary of State registration
+├─ USPS commercial mail receiver
+├─ LinkedIn profiles
+├─ Utility account (commercial vs. residential)
+└─ Zoning records
+
+Step 4: Target Buyer Industry Categorization and Segmentation Metric (Can be used to tell/supply buyers in different industries that the supplier originally OR initially showed interest in)
+├─ ** I WANT YOU TO FIND MORE/BETTER REASONS OR STRATEGIES TO DEFINE TARGET BUYER INDUSTRY CATEGORIZATION METRICS (THE FOLLOWING IS JUST EXAMPLES) **
+├─ The buyer's core product(s)
+├─ WHO they are trying to sell to OR serve (Defines what type of business they are themselves)
+├─ Example buyer industries: 1. Warehousing, 2. 3rd party warehousing, 3. 3PLs, 4. Beverage/Wine/Drink, 5. Transportation, 6. Other packaging businesses that can use the supplier's packaging solution, 7. Pharmaceuticals, 8. Food, etc.
+
+Step 5: Out of 1,000,000 addresses → 80,000 have business signals
+
+Step 6: Ghost Company Detection
+├─ Residential address BUT business registered there
+├─ E-commerce platform detected (Shopify, WooCommerce)
+├─ Amazon/eBay/Etsy seller account
+├─ Social media business pages (Instagram shop, Facebook)
+├─ Google reviews mentioning products
+└─ Ad spend signals (Meta Ads Library, Google Ads)
+
+
+Step 7: Out of 80,000 → ~5,000-8,000 are ghost companies
+
+```
+# 8.1: GHOST COMPANY DETECTION (Premium Add-On) {#part-8}
 ## **The "Invisible Market" Layer**
 
 ### **Context:**
@@ -892,39 +938,7 @@ Ghost companies are **$500K-$3M revenue businesses** operating from:
 
 **Pricing Model:**
 - **Base license:** $2,000/month (visible companies only)
-- **Ghost add-on:** +$500-$1,000/month (adds 10-20 ghost buyers/month)
-
----
-
-## 8.1: BUILDING-BY-BUILDING SCAN METHODOLOGY
-
-**The Approach:**
-
-```
-Step 1: Define Zone Boundaries
-├─ Example: North Jersey Zone = Postal codes 07001-07199
-├─ Total addresses in zone: ~1,000,000
-
-Step 2: Filter for Business Signals
-├─ Google Maps business listing
-├─ Secretary of State registration
-├─ USPS commercial mail receiver
-├─ LinkedIn profiles
-├─ Utility account (commercial vs. residential)
-└─ Zoning records
-
-Step 3: Out of 1,000,000 addresses → 80,000 have business signals
-
-Step 4: Ghost Company Detection
-├─ Residential address BUT business registered there
-├─ E-commerce platform detected (Shopify, WooCommerce)
-├─ Amazon/eBay/Etsy seller account
-├─ Social media business pages (Instagram shop, Facebook)
-├─ Google reviews mentioning products
-└─ Ad spend signals (Meta Ads Library, Google Ads)
-
-Step 5: Out of 80,000 → ~5,000-8,000 are ghost companies
-```
+- **Ghost add-on:** +$500-$1,000/month (adds 50-100 ghost buyers/month)
 
 ---
 
@@ -1072,7 +1086,7 @@ Not all data needs daily updates. We optimize refresh cycles to **balance freshn
 
 ---
 
-## 9.2: DATA STALENESS PENALTIES
+## 9.2: DATA STALENESS PENALTIES (OR time decay)
 
 **Confidence Scoring Adjustments:**
 
@@ -1220,7 +1234,7 @@ When a zone is full, competitors join the **bidding pool** to claim the zone whe
 
 **Payment Default (6-month ban):**
 ```
-Bidder wins zone → Doesn't pay within 7 days
+Bidder wins zone → Doesn't pay within 14 days
 Ban: 6 months before allowed to bid again
 ```
 
@@ -1240,6 +1254,14 @@ Ban: 12 months
 ```
 Bidder signs up, accesses competitor data, immediately cancels
 Ban: Permanent + legal action
+
+```
+**Bidder rules**
+```
+Bidder will have to pay $100 minimum in order to join the bidding pool
+Bidder can see the highest bidding pool bid ($100 or more)
+If there are two or multiple same-bid highest bid in a bidding pool for a zone, the system randomly chooses one as a winner (But leaves a 3 hour window to all of the same-highest bidders and notifies them to bid higher or one of them among them will be a winner chosen by the system)... The AI or the system chooses the one with the highest likelihood of paying, and if couldnt tell, just choose randomly.
+
 ```
 
 ---
@@ -1260,6 +1282,7 @@ Base Price: $2,000/month
 ├─ Includes: 30-50 buyers/month (visible companies)
 ├─ Includes: Competitor intelligence for that zone
 ├─ Includes: Full urgency/velocity/confidence scoring
+├─ We should also show them the revenue opportunity for each zone (Before they want to licence it), but here is the caveat: The overall roughly estimated new worth deal size of all the buildings or businesses that can buy from the supplier should not be worth more than ~1% of the current revenue of the supplier (this would mean that, if out of 1 million buildings, ~80K are the supplier TAM, and his SAM (Serviceable addreasable market) could be ~68K Ghost companies, SMBs, and MMBs of all buyer industry types, from being able to buy FOR EXAMPLE one roll of stretch/shrink films to pallets of films, should not be more than ~1% of the supplier revenue which by example could mean that if the supplier revenue was ~$1M then his SAM Revenue Opportunity for the supplier can not be more than ~$100M... Which will be achievable if we determine roughly (Doesnt need to be exactly accurate), what is the supplier revenue.
 └─ Excludes: Ghost company intelligence (add-on)
 ```
 
@@ -1273,7 +1296,7 @@ Discount: 3+ zones = 10% off each add-on zone
 **Ghost Intelligence Add-On:**
 ```
 Ghost Price: +$500-$1,000/month
-Adds: 10-20 ghost buyers/month
+Adds: 50-100 ghost buyers/month
 Optional checkbox during onboarding
 ```
 
@@ -1289,12 +1312,10 @@ Base Renewal Price = $2,000/month
 Price Increase per 10 Verified Bidders:
 ├─ 1-9 bidders: No increase
 ├─ 10-19 bidders: +$100/month
-├─ 20-29 bidders: +$200/month (cumulative: $2,200)
-├─ 30-39 bidders: +$300/month (cumulative: $2,500)
-├─ 40-49 bidders: +$400/month (cumulative: $2,900)
-├─ 50+ bidders: +$500/month (cumulative: $3,400)
+├─ 20-29 bidders: +$500/month (cumulative: $2,500)
+├─ 30-50 bidders: +$1500/month (cumulative: $4,000)
 
-Cap: $5,000/month (even if 100+ bidders)
+Cap: $3,000/month (even if 50+ bidders)
 ```
 
 **Example:**
@@ -1303,8 +1324,8 @@ Tom licenses North Jersey Stretch Wrap at $2,000/month.
 
 Month 1-3: 5 bidders → No increase → $2,000/month
 Month 4: 12 bidders → +$100 → Renewal: $2,100/month
-Month 8: 25 bidders → +$200 → Renewal: $2,200/month
-Month 12: 45 bidders → +$400 → Renewal: $2,900/month
+Month 8: 25 bidders → +$200 → Renewal: $2,500/month
+Month 12: 45 bidders → +$400 → Renewal: $4,000/month
 ```
 
 ---
@@ -1314,17 +1335,19 @@ Month 12: 45 bidders → +$400 → Renewal: $2,900/month
 **Annual Plan Strategy:**
 
 ```
-Monthly Plan: $2,000/month × 12 = $24,000/year
-Annual Plan: $12,000/year (50% off = 6 months free)
+If the monthly plan was $2000, But we can also say it in days (If it hits better in suppliers mind)
+Plan Title Name strategy: [Zone Name] + [Supplier Product Name] + Market Intelligence Licence:
+Lock down this zone for a Month (Plan): $66/day (For 30 days)
+Lock down this zone for a Year (Plan): $27.5/day (58.4% off = 7 months free) (For 365 days)
 
 Benefits:
-├─ 50% discount (6 months free)
+├─ 58.4% discount (7 months free)
 ├─ Bidding pool immunity: Price locked for 12 months
 ├─ Priority support
 └─ Early access to new features
 ```
 
-**Why 50% Discount:**
+**Why 58.4% Discount:**
 - Upfront cash = marketing budget for acquiring suppliers
 - Annual commitment = lower churn risk
 - Tom locks in rate = avoids bidding pool price increases for 12 months
@@ -1360,13 +1383,14 @@ Day 46+: Zone permanently lost
 ---
 
 # PART 13: ZONE SEGMENTATION {#part-13}
-## **~150 Zones Across US**
+## **~X Zones Across US**
 
 ### **Context:**
 Zones are **postal code clusters** optimized for:
 - Buyer density (enough buyers to justify exclusivity)
 - Geographic compactness (supplier can realistically serve)
 - Shipping logistics (align with freight zones)
+- In zone creations, this would also be factored in if not all of the constraints are met, we keep expanding on the zone until +1 more state other than the primary state is reached or covered. No zone should have more than 2 states inside it.
 
 ---
 
@@ -1483,7 +1507,7 @@ FINANCIAL INTELLIGENCE:
 ├─ Payment processor data: $50-200/month
 └─ Subtotal: $120-500/month
 
-REAL ESTATE:
+REAL ESTATE: (OR building by building intel coming from Google solutions, which costs way less)
 ├─ CoStar API: $300-1,000/month
 ├─ LoopNet API: $200-600/month
 └─ Subtotal: $500-1,600/month
