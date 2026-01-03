@@ -917,7 +917,7 @@ FROM: Email domain + LinkedIn
 
 FROM: All Layer 1 data aggregated
 
-├─ Industry classification: Manufacturing / E-commerce / Pharma / Food & Beverage / Transportation / Storage
+├─ Industry classification: Manufacturing/ Other Packaging companies / E-commerce / Pharma / Food & Beverage / Transportation / Storage
 ├─ Company size estimate: <10 / 10-50 / 50-200 / 200+
 ├─ Revenue range estimate: $0-$500K / $500K-$2M / $2M-$10M / $10M+
 ├─ Growth trajectory: Scaling (hockey stick) / Growing (steady) / Stable / Declining
@@ -948,6 +948,7 @@ FROM: Supplier's industry + product + location
 ├─ Direct competitors: Who else sells stretch wrap in North Jersey?
 ├─ Indirect competitors: Who sells substitute products (shrink wrap vs. stretch)?
 ├─ Market leaders: Top 3-5 players in the region
+├─ Using third parties: Apollo, Instantly.ai, ZoomInfo, Rocketreach, LinkedIn, etc.
 ├─ Pricing signals: Public pricing (if available on competitor sites)
 ├─ Product mix: What products do THEY offer vs. what supplier offers?
 └─ Market positioning: Premium / Mid-market / Budget
@@ -985,9 +986,9 @@ FOR EACH COMPETITOR REVIEW:
 ├─ Review Platform: Google, Yelp, BBB, Trustpilot, or platform found via "[Competitor] + reviews"
 ├─ Review Recency: 0-6 months (HOT) | 6-12 months (WARM) | 12+ months (COOL)
 ├─ Review Sentiment: 
-│   ├─ Positive (5 stars): Praise, nothing to steal
-│   ├─ Mixed (3-4 stars): Praise + one complaint = OPPORTUNITY
-│   └─ Negative (1-2 stars): Severe problem = HIGH OPPORTUNITY
+│   ├─ Positive (5 stars): Praise, nothing to steal, but figure out the buyer business to replicate the buyer business later for the supplier (cause they are already buying from competition)
+│   ├─ Mixed (3-4 stars): Praise + one complaint = OPPORTUNITY + replicate the buyer business later for the supplier as a new buyer discovery (If not added before)
+│   └─ Negative (1-2 stars): Severe problem = HIGH OPPORTUNITY + replicate the buyer business later for the supplier as a new buyer discovery (If not added before)
 ├─ Review Content Analysis:
 │   ├─ What specific problem does the buyer mention?
 │   │   ├─ Slow delivery? → Supplier speed leader advantage
@@ -1008,8 +1009,8 @@ FOR EACH COMPETITOR REVIEW:
 │   ├─ IF buyer needs "custom specs" AND supplier = Quality/Customization → +30
 │   └─ IF no match → +0
 └─ Contact Extraction: Can we identify the buyer company name from review context?
-    ├─ IF review mentions buyer's company name → Extract for outreach
-    ├─ IF review mentions buyer's product/use case → Infer buyer industry
+    ├─ IF review mentions buyer's company name → Extract for outreach + replicate the buyer business later for the supplier as a new buyer discovery (If not added before)
+    ├─ IF review mentions buyer's product/use case → Infer buyer industry + replicate the buyer industry later for the supplier as a new buyer discovery (If not added before)
     └─ This allows us to DIRECTLY suggest this buyer to supplier
 
 **GOAL 2: Alert Supplier to Territorial Competitor Threats**
@@ -1091,7 +1092,7 @@ FOR COMPETITOR ACTIVITY:
 ├─ New Building Permits (Zone ± 5 miles):
 │   └─ IF competitor opens new location = ALERT ("Competitor expanding nearby, increase presence")
 ├─ New Job Postings (Zone):
-│   └─ IF competitor posts 5+ sales jobs = ALERT ("Competitor hiring sales team in your zone")
+│   └─ IF competitor posts 2+ sales jobs = ALERT ("Competitor hiring sales team in your zone")
 ├─ Pricing Changes (Public website):
 │   └─ IF competitor prices drop >10% = ALERT ("Competitor price pressure detected")
 └─ New LinkedIn Updates:
@@ -1112,7 +1113,7 @@ Current Status: 🟡 YELLOW - Moderate Pressure
 Threats Detected:
 ├─ XYZ Packaging: New warehouse permit filed 15 miles away (building 30K sq ft facility)
 │   └─ Action: Notify local customers of your capacity, offer expanded service area
-├─ ABC Supplies: 3 new sales positions posted (zone)
+├─ ABC Supplies: 2 new sales positions posted (zone)
 │   └─ Action: Consider hiring +1 sales rep to match coverage
 └─ DEF Materials: Price reduction 8% (public pricing)
     └─ Action: Review margins, consider promotional offer to key accounts
@@ -1132,7 +1133,7 @@ Buyer Stealing Opportunities: 12 this month
 
 FROM: Supplier's direct customer file upload + website + LinkedIn + news
 
-├─ Supplier's current customer base file upload: OPTIONAL "Upload your customers to exclude them"
+├─ Supplier's current customer base file upload: OPTIONAL "Upload your customers to exclude them AND to teach us about who buys fastest."
 ├─ Customer logos displayed on site
 ├─ Testimonials mentioning company names (to clone the perfect buyer profile)
 ├─ LinkedIn connections (CEO connected to which companies?)
@@ -1146,7 +1147,7 @@ FROM: Supplier's direct customer file upload + website + LinkedIn + news
 - **Clone perfect buyer:** Use existing happy customers to find similar prospects
 
 **Tools:**
-- Website scraper (Apify)
+- Website scraper (Apify OR Google)
 - LinkedIn manual review (Phase 1)
 - News API search for supplier mentions
 - **CSV Upload:** Direct supplier import of current customer list
@@ -1348,7 +1349,7 @@ Interpretation:
 **Output:**
 - **Alert Level:** RED / YELLOW / GREEN
 - **Recommended Terms:**
-  - RED = Prepayment required / Avoid
+  - RED = Prepayment required / Proceed with caution
   - YELLOW = Net 30, require deposit
   - GREEN = Net 60+, standard terms
 
@@ -1503,7 +1504,10 @@ Financial data answers: **Can they pay? Are they growing?** Critical for alert a
 
 Refined Estimation (considering buyer industry):
 ├─ E-commerce (high packaging need): Multiply by 1.5×
+├─ 3PLs/Warehousing (high packaging need): Multiply by 1.6×
 ├─ Manufacturing (moderate need): Multiply by 1.0×
+├─ Transportation/storage (High packaging need): Multiply by 1.5×
+├─ Other packaging companies (High packaging need): Multiply by 1.45x
 ├─ Food & Beverage (high packaging need): Multiply by 1.3×
 └─ Pharmaceutical (low volume, high specs): Multiply by 0.6×
 ```
@@ -1544,7 +1548,7 @@ Confirms buyer is **legally operating** and **compliant**. Critical for confiden
 
 ---
 
-# PART 8: GHOST COMPANY DETECTION (Premium Add-On) {#part-8}
+# PART 8: GHOST as well as COMPETITOR COMPANY DETECTION (Premium Add-On for ghost companies, but also used for competitor company detection from all platforms to check and hunt for reviews, sentiments, and also check if the competitor is present on any of the platforms to check the reviews and hunt for buyers, Same competitor discovery/buyer discovery strategy applies for in here, as we covered earlier above) {#part-8}
 
 ## **The "Invisible Market" Layer**
 
@@ -1815,7 +1819,7 @@ BIDDING POOL: North Jersey - Stretch Wrap
 Current Highest Bid: $2,150/month (by XYZ Packaging Inc.)
 Your Deposit: $100 (will be applied to first month if you win)
 
-Your Bid: $__________ /month
+Your Bid: $__________ /month 
 
 Note: Minimum bid is $100 above current highest ($2,250 minimum)
 
